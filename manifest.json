@@ -1,0 +1,35 @@
+{
+    "name": "WRFHydro",
+    "description": "WRFHydro",
+    "estimated_runtime": "vary by model size, simulation period and configurations",
+    "container": "wrfhydro-5.x",
+    "pre_processing_stage": "compile.sh",
+    "execution_stage": "main.sh",
+    "post_processing_stage": "postprocessing.sh",
+    "slurm_input_rules": {
+   
+           "time": {
+                "max": 10,
+                "min": 1,
+                "default_value": 1,
+                "step": 1,
+                "unit": "Hours"   
+            },
+            "num_of_task": {
+                "max": 127,
+                "min": 1,
+                "default_value": 9,
+                "step": 1
+            },
+            "memory_per_cpu": {
+                "max": 4,
+                "min": 1,
+                "default_value": 1,
+                "step": 1,
+                "unit": "GB"
+            }    
+    },
+    "require_upload_data": true,
+    "supported_hpc": ["keeling_community", "expanse_community"],
+    "default_hpc": "keeling_community"
+}
