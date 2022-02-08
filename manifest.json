@@ -37,6 +37,11 @@
             "type": "string_input",
             "require": true,
             "default_value": "v5.2.0-rc1"
+        },
+        "lsm": {
+            "type": "string_option",
+            "options": ["Noah", "NoahMP"],
+            "default_value": "NoahMP"
         }
     }
 }
