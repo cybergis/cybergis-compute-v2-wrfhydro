@@ -4,7 +4,7 @@ echo "compile"
 env
 echo "checking out source code"
 git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/WRFHYDRO
-cd {executable_folder}/WRFHYDRO && git checkout ${param_git_tag_id}
+cd ${executable_folder}/WRFHYDRO && git checkout ${param_git_tag_id}
 
 echo "compiling"
 chmod +x ${data_folder}/setEnvar.sh
