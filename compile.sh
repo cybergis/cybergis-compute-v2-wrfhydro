@@ -7,9 +7,12 @@ git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/
 cd {executable_folder}/WRFHYDRO && git checkout ${param_git_tag_id}
 
 echo "compiling"
+chmod +x ${data_folder}/setEnvar.sh
 cp  ${data_folder}/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 cd ${executable_folder}/WRFHYDRO/trunk/NDHMS
+chmod +x ./configure
 ./configure 2
+chmod +x ./compile_offline_NoahMP.sh
 ./compile_offline_NoahMP.sh setEnvar.sh
 ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 
