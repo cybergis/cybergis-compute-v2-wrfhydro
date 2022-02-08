@@ -36,7 +36,7 @@
         "commit_id_or_tag": {
             "type": "string_input",
             "require": true,
-            "default_value": "v5.2.0-rc1",
+            "default_value": "v5.2.0-rc1"
         }
     }
 }
