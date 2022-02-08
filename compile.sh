@@ -39,7 +39,7 @@ ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 
 echo "setting up simulation folder"
 mkdir -p ${result_folder}/Simulation
-echo "copying model executable"
+echo "copying Run/* to Simulation/"
 cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
 
 echo "namelist.hrldas"
