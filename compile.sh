@@ -1,17 +1,16 @@
 #!/bin/bash
  
 echo "compile.sh"
-env
 echo "checking out source code"
 git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/WRFHYDRO
 cd ${executable_folder}/WRFHYDRO && git checkout ${param_git_branch_tag_commit}
 
 echo "compiling"
-echo "setEnvar.sh"
+echo "copying setEnvar.sh"
 cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 setEnvar=${data_folder}/setEnvar.sh
 if [[ -f "${setEnvar}" ]]; then
-    echo "setEnvar.sh Provided. Overwriting..."
+    echo "setEnvar.sh provided by user. overwriting..."
     cp  ${data_folder}/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 fi
 chmod +x ${executable_folder}/WRFHYDRO/trunk/NDHMS/setEnvar.sh
@@ -42,16 +41,16 @@ mkdir -p ${result_folder}/Simulation
 echo "copying Run/* to Simulation/"
 cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
 
-echo "namelist.hrldas"
+echo "copying namelist.hrldas from repo"
 namelist_hrldas=${data_folder}/namelist.hrldas
 if [[ -f "${namelist_hrldas}" ]]; then
-    echo "namelist.hrldas Provided. Overwriting..."
+    echo "namelist.hrldas provided by user. overwriting..."
     cp  ${data_folder}/namelist.hrldas  ${result_folder}/Simulation
 fi
-echo "hydro.namelist"
+echo "copying hydro.namelist from repo"
 hydro_namelist=${data_folder}/hydro.namelist
 if [[ -f "${hydro_namelist}" ]]; then
-    echo "hydro.namelist Provided. Overwriting..."
+    echo "hydro.namelist provided by user. overwriting..."
     cp  ${data_folder}/hydro.namelist  ${result_folder}/Simulation
 fi
 
