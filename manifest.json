@@ -34,7 +34,7 @@
     "default_hpc": "keeling_community",
     "param_rules": {
         "commit_id_or_tag": {
-            "type": "string",
+            "type": "string_input",
             "require": true,
             "default_value": "v5.2.0-rc1",
         }
