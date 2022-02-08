@@ -1,6 +1,6 @@
 #!/bin/bash
  
-echo "compile"
+echo "compile.sh"
 env
 echo "checking out source code"
 git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/WRFHYDRO
@@ -11,13 +11,12 @@ echo "setEnvar.sh"
 setEnvar=${data_folder}/setEnvar.sh
 if [[ -f "${setEnvar}" ]]; then
     echo "setEnvar.sh Provided."
-    chmod +x ${data_folder}/setEnvar.sh
     cp  ${data_folder}/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 else
     echo "setEnvar.sh Not Provided; Use default from repo."
-    chmod +x ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/setEnvar.sh
     cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 fi
+chmod +x ${executable_folder}/WRFHYDRO/trunk/NDHMS/setEnvar.sh
 
 
 cd ${executable_folder}/WRFHYDRO/trunk/NDHMS
@@ -34,7 +33,9 @@ if [[ "${param_lsm}" != "NoahMP" && "${param_lsm}" != "Noah" ]]; then
   echo "ENV parm_lsm Value Unknown; Default to NoahMP"
   param_lsm="NoahMP"
 fi
+echo "param_lsm: ${param_lsm}"
 
+echo "running: ./compile_offline_${param_lsm}.sh setEnvar.sh"
 ./compile_offline_${param_lsm}.sh setEnvar.sh
 ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 
