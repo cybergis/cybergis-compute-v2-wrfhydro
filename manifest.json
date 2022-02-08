@@ -31,5 +31,12 @@
     },
     "require_upload_data": true,
     "supported_hpc": ["keeling_community", "expanse_community"],
-    "default_hpc": "keeling_community"
+    "default_hpc": "keeling_community",
+    "param_rules": {
+        "git_commit_id": {
+            "type": "string",
+            "require": true,
+            "default_value": '4d0c8ad534aa5f53a392008b1144170d42e7307c',
+        }
+    }
 }
