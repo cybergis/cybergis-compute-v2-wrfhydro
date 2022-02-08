@@ -19,7 +19,7 @@ echo "copying model executable"
 cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/*.TBL ${result_folder}/Simulation
 cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/wrf_hydro.exe ${result_folder}/Simulation
 echo "compying hydro.namelist and namelist.hrldas"
-cp  ${data_folder}/namelist.hrlda  ${result_folder}/Simulation
+cp  ${data_folder}/namelist.hrldas  ${result_folder}/Simulation
 cp  ${data_folder}/hydro.namelist  ${result_folder}/Simulation
 echo "setting symbolic links to Domain and Forcing"
 ln -sf ${data_folder}/FORCING ${result_folder}/Simulation
