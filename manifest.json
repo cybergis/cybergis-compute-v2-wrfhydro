@@ -33,7 +33,7 @@
     "supported_hpc": ["keeling_community", "expanse_community"],
     "default_hpc": "keeling_community",
     "param_rules": {
-        "git_tag_id": {
+        "git_branch_tag_commit": {
             "type": "string_input",
             "require": true,
             "default_value": "v5.2.0-rc1"
