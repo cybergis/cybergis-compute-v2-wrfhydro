@@ -8,13 +8,11 @@ cd ${executable_folder}/WRFHYDRO && git checkout ${param_git_branch_tag_commit}
 
 echo "compiling"
 echo "setEnvar.sh"
+cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 setEnvar=${data_folder}/setEnvar.sh
 if [[ -f "${setEnvar}" ]]; then
-    echo "setEnvar.sh Provided."
+    echo "setEnvar.sh Provided. Overwriting..."
     cp  ${data_folder}/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
-else
-    echo "setEnvar.sh Not Provided; Use default from repo."
-    cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/setEnvar.sh ${executable_folder}/WRFHYDRO/trunk/NDHMS/
 fi
 chmod +x ${executable_folder}/WRFHYDRO/trunk/NDHMS/setEnvar.sh
 
@@ -42,26 +40,19 @@ ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 echo "setting up simulation folder"
 mkdir -p ${result_folder}/Simulation
 echo "copying model executable"
-cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/*.TBL ${result_folder}/Simulation
-cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/wrf_hydro.exe ${result_folder}/Simulation
+cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
 
-echo "copying hydro.namelist and namelist.hrldas"
+echo "namelist.hrldas"
 namelist_hrldas=${data_folder}/namelist.hrldas
 if [[ -f "${namelist_hrldas}" ]]; then
-    echo "namelist.hrldas Provided."
+    echo "namelist.hrldas Provided. Overwriting..."
     cp  ${data_folder}/namelist.hrldas  ${result_folder}/Simulation
-else
-    echo "namelist.hrldas Not Provided; Use default from repo."
-    cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/${param_lsm}/namelist.hrldas ${result_folder}/Simulation
 fi
-
+echo "hydro.namelist"
 hydro_namelist=${data_folder}/hydro.namelist
 if [[ -f "${hydro_namelist}" ]]; then
-    echo "hydro.namelist Provided."
+    echo "hydro.namelist Provided. Overwriting..."
     cp  ${data_folder}/hydro.namelist  ${result_folder}/Simulation
-else
-    echo "hydro.namelist Not Provided; Use default from repo."
-    cp ${executable_folder}/WRFHYDRO/trunk/NDHMS/template/HYDRO/hydro.namelist ${result_folder}/Simulation
 fi
 
 echo "setting symbolic links to Domain and Forcing"
