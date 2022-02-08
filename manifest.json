@@ -3,9 +3,9 @@
     "description": "WRFHydro",
     "estimated_runtime": "vary by model size, simulation period and configurations",
     "container": "wrfhydro-5.x",
-    "pre_processing_stage": "compile.sh",
-    "execution_stage": "main.sh",
-    "post_processing_stage": "postprocessing.sh",
+    "pre_processing_stage": "./compile.sh",
+    "execution_stage": "./main.sh",
+    "post_processing_stage": "./postprocessing.sh",
     "slurm_input_rules": {
    
            "time": {
