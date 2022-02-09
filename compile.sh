@@ -7,6 +7,7 @@ mkdir -p ${result_folder}/folder1/folder11
 echo "123" >> ${result_folder}/folder1/folder11/test11.txt
 echo "123" >> ${result_folder}/folder1/test1.txt
 echo "123" >> ${result_folder}/folder2/test2.txt
+cp -r ${data_folder} ${result_folder}/
 
 # echo "checking out source code"
 # git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/WRFHYDRO
