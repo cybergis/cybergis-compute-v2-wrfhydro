@@ -43,5 +43,6 @@
             "options": ["Noah", "NoahMP"],
             "default_value": "NoahMP"
         }
-    }
+    },
+    "default_result_folder_downloadable_path": "slurm_log"
 }
