@@ -65,5 +65,9 @@ fi
 echo "setting symbolic links to Domain and Forcing"
 ln -sf ${data_folder}/FORCING ${result_folder}/Simulation
 ln -sf ${data_folder}/DOMAIN ${result_folder}/Simulation
+restart_folder=${data_folder}/RESTART
+if [[ -d "${restart_folder}" ]]; then
+    cp  ${data_folder}/RESTART  ${result_folder}/Simulation
+fi
 
 ls ${data_folder}/DOMAIN ${result_folder}/Simulation -al
