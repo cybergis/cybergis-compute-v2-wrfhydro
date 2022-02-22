@@ -47,6 +47,18 @@ ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 echo "setting up simulation folder"
 mkdir -p ${result_folder}/Simulation
 
+
+echo "setting symbolic links to Domain and Forcing"
+ln -sf ${data_folder}/FORCING ${result_folder}/Simulation
+ln -sf ${data_folder}/DOMAIN ${result_folder}/Simulation
+restart_folder=${data_folder}/RESTART
+if [[ -d "${restart_folder}" ]]; then
+    ln -sf ${data_folder}/RESTART  ${result_folder}/Simulation
+fi
+
+echo "copying compiled binary and static files from Run/* to Simulation/"
+cp -rf ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
+
 echo "copying namelist.hrldas from repo"
 namelist_hrldas=${data_folder}/namelist.hrldas
 if [[ -f "${namelist_hrldas}" ]]; then
@@ -61,15 +73,5 @@ if [[ -f "${hydro_namelist}" ]]; then
     cp  ${data_folder}/hydro.namelist  ${result_folder}/Simulation
 fi
 
-echo "setting symbolic links to Domain and Forcing"
-ln -sf ${data_folder}/FORCING ${result_folder}/Simulation
-ln -sf ${data_folder}/DOMAIN ${result_folder}/Simulation
-restart_folder=${data_folder}/RESTART
-if [[ -d "${restart_folder}" ]]; then
-    ln -sf ${data_folder}/RESTART  ${result_folder}/Simulation
-fi
-
-echo "copying compiled binary and other static files from Run/* to Simulation/"
-cp -rf ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
 
 ls ${data_folder}/DOMAIN ${result_folder}/Simulation -al
