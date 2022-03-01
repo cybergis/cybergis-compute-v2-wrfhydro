@@ -33,12 +33,12 @@
     "supported_hpc": ["keeling_community", "expanse_community"],
     "default_hpc": "keeling_community",
     "param_rules": {
-        "git_branch_tag_commit": {
+        "Model_Version": {
             "type": "string_input",
             "require": true,
             "default_value": "v5.2.0"
         },
-        "lsm": {
+        "LSM_Type": {
             "type": "string_option",
             "options": ["Noah", "NoahMP"],
             "default_value": "NoahMP"
