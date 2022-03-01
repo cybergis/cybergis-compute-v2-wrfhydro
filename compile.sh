@@ -11,7 +11,7 @@ echo "compile.sh"
 
 echo "checking out source code"
 git clone https://github.com/NCAR/wrf_hydro_nwm_public.git ${executable_folder}/WRFHYDRO
-cd ${executable_folder}/WRFHYDRO && git checkout ${param_git_branch_tag_commit}
+cd ${executable_folder}/WRFHYDRO && git checkout ${param_Model_Version}
 
 echo "compiling"
 echo "copying setEnvar.sh"
@@ -29,19 +29,19 @@ chmod +x ./configure
 ./configure 2
 chmod +x ./compile_offline_NoahMP.sh
 chmod +x ./compile_offline_Noah.sh
-if [ -z "${param_lsm}" ]; then
-  echo "ENV parm_lsm Not Set; Default to NoahMP"
-  param_lsm="NoahMP"
+if [ -z "${param_LSM_Type}" ]; then
+  echo "ENV parm_LSM_Type Not Set; Default to NoahMP"
+  param_LSM_Type="NoahMP"
 fi
 
-if [[ "${param_lsm}" != "NoahMP" && "${param_lsm}" != "Noah" ]]; then
+if [[ "${param_LSM_Type}" != "NoahMP" && "${param_LSM_Type}" != "Noah" ]]; then
   echo "ENV parm_lsm Value Unknown; Default to NoahMP"
-  param_lsm="NoahMP"
+  param_LSM_Type="NoahMP"
 fi
-echo "param_lsm: ${param_lsm}"
+echo "param_LSM_Type: ${param_LSM_Type}"
 
-echo "running: ./compile_offline_${param_lsm}.sh setEnvar.sh"
-./compile_offline_${param_lsm}.sh setEnvar.sh
+echo "running: ./compile_offline_${param_LSM_Type}.sh setEnvar.sh"
+./compile_offline_${param_LSM_Type}.sh setEnvar.sh
 ls ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run -al
 
 echo "setting up simulation folder"
