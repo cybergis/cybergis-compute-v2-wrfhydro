@@ -1,0 +1,2 @@
+Bootstrap: docker
+From: zhiyuli/wrfhydro_conda_bionic:0.3
