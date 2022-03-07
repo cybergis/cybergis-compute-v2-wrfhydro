@@ -1,0 +1,93 @@
+FROM ubuntu:bionic
+
+####################################
+########## ROOT USER  ##############
+####################################
+USER root
+
+####################################
+RUN apt-get update \
+	&& apt-get install -yq --no-install-recommends \
+	   software-properties-common \
+           build-essential \
+           gfortran \
+           wget \
+           git \
+        && apt upgrade -y
+
+## Download, build, and install MPICH
+RUN MPICH_VERSION="3.2" \
+    && MPICH_CONFIGURE_OPTIONS="" \
+    && MPICH_MAKE_OPTIONS='-j 2' \
+    && mkdir /tmp/mpich-src \
+    && cd /tmp/mpich-src \
+    && wget http://www.mpich.org/static/downloads/${MPICH_VERSION}/mpich-${MPICH_VERSION}.tar.gz \
+    && tar xfz mpich-${MPICH_VERSION}.tar.gz  \
+    && cd mpich-${MPICH_VERSION}  \
+    && ./configure ${MPICH_CONFIGURE_OPTIONS}  \
+    && make ${MPICH_MAKE_OPTIONS} && make install \
+    && rm -rf /tmp/mpich-src
+
+RUN apt-get update \
+    && apt-get install -yq --no-install-recommends \
+    libhdf5-dev \
+    libnetcdf-dev \
+    libnetcdff-dev \
+    autoconf \
+    automake \
+    libtool \
+    netcdf-bin \
+    bash-completion \
+    netcat \
+    iputils-ping \
+    nano \
+    screen \
+    openssh-client \
+    zip \
+    unzip \
+    nco \
+    curl \
+    aria2 \
+    rsync \
+    lsb-release \
+    && apt-get clean
+
+ENV NETCDF_LIB=/usr/lib/x86_64-linux-gnu
+ENV NETCDF_INC=/usr/include
+
+## just to be sure 
+RUN rm -rf /tmp/*
+
+###################################
+## create docker user
+RUN useradd -ms /bin/bash docker
+RUN usermod -aG sudo docker
+RUN chmod -R 777 /home/docker/
+
+###################################
+# Python
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh \
+    && bash Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -p /opt/miniconda3 \
+    && rm Miniconda3-py37_4.8.3-Linux-x86_64.sh \
+    && chown -R docker:docker /opt/miniconda3 
+
+#Set environment variables
+ENV PATH="/opt/miniconda3/bin:${PATH}"
+
+###################################
+
+#Install modules
+RUN conda install -c conda-forge -y jupyterlab cartopy rasterio netcdf4 dask f90nml deepdiff \
+xarray plotnine boltons jupyter_contrib_nbextensions termcolor
+RUN pip install pytest pytest-datadir-ng pytest-html
+RUN pip install spotpy git+https://github.com/NCAR/wrf_hydro_py.git@22eb7c827f5219ce5911e0607ce6c054e665fd4b
+
+RUN mkdir -p /workspace && chmod -R 777 /workspace
+RUN chmod -R 777 /home/docker
+RUN chmod -R 777 /opt/miniconda3
+
+RUN mkdir -p /home/jovyan/work/workspace
+RUN chmod -R 777 /home
+
+USER docker
+WORKDIR /home/docker
