@@ -34,5 +34,5 @@ This script is just a place holder for future extension.
 
 ## "images" folder
 
-This folder contains the dockerfile that builds the summa environment image and a singlarity DEF script that importes the docker image and converts to singularity container.
+This folder contains the dockerfile that builds the WRFHydro environment image and a singlarity DEF script that importes the docker image and converts to singularity container.
 
