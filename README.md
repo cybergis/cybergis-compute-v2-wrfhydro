@@ -18,17 +18,19 @@ The key "container" lists the singularity container to use on HPC (placed on HPC
 
 Other kyes for metadata: "name", "description", "estimated_runtime"
 
-## preprocessing.py
+The "param_rules" section contains model-specific parameters: "Model_Version" is the tag/release/commit id/branch of the WRFHydro repo; "LSM_Type" is the land surface model to use;
 
-This is file is not being used right now. Just keep it as a placeholder for later use
+## compile.sh
 
-## main.py
+This script git clons the WRFHydro repo and checks out the specific version. It then applies Compile-Time configurations on top of the code base and compiles the codes on the fly. It also applies Run-Time configurations and Model Data to the "Simulation" folder.
 
-This script is called inside the singularity container in a MPI environment for executing predefined ensemble SUMMA models. Since in SUMMA each member of the ensemble is independent, the script splits all the ensemble models evenly over all MPI ranks and they run in paralel.  Rank 0 first ceates a "workers" for each MPI rank, and then each rank copies model files into its rank-specific job folder, calls pysumma to configure the local models and runs them one bye one.
+## main.sh
 
-## postprocessing.py
+This script simpily navigate to the "Simulation" folder and call the executable binary "WRFHydro.exe"
 
-This script is used only for reproducing the experiments done in SUMMA CAMELS paper. Not for general SUMMA ensemble modelling purpose.
+## postprocessing.sh
+
+This script is just a place holder for future extension.
 
 ## "images" folder
 
