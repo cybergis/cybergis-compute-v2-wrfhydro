@@ -1,5 +1,7 @@
 #!/bin/bash
- 
+
+echo "SLURM_JOB_ID: $SLURM_JOB_ID"
+
 echo "compile.sh"
 # mkdir -p ${result_folder}/folder1
 # mkdir -p ${result_folder}/folder2
