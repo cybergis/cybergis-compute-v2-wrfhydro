@@ -23,7 +23,8 @@ function MoveFiles () {
    fi
 
 }
-OUTPUT_ROOT=../Outputs
+
+OUTPUT_ROOT=${result_folder}/Outputs
 
 #*.CHRTOUT_DOMAIN* --> CHRTOUT
 MoveFiles "*.CHRTOUT_DOMAIN*" "$OUTPUT_ROOT/CHRTOUT"
