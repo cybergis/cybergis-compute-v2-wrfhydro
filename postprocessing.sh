@@ -50,4 +50,10 @@ MoveFiles "RESTART.*_DOMAIN*" "$OUTPUT_ROOT/RESTART"
 #diag_hydro.* -->  diag_hydro
 MoveFiles "diag_hydro.*" "$OUTPUT_ROOT/diag_hydro"
 
+#*.LAKEOUT_DOMAIN* -->  LAKEOUT
+MoveFiles "*.LAKEOUT_DOMAIN*" "$OUTPUT_ROOT/LAKEOUT"
+
+#*.CHANOBS_DOMAIN* -->  CHANOBS
+MoveFiles "*.CHANOBS_DOMAIN*" "$OUTPUT_ROOT/CHANOBS"
+
 echo "postprocessing doen"
