@@ -57,3 +57,5 @@ MoveFiles "*.LAKEOUT_DOMAIN*" "$OUTPUT_ROOT/LAKEOUT"
 MoveFiles "*.CHANOBS_DOMAIN*" "$OUTPUT_ROOT/CHANOBS"
 
 echo "postprocessing doen"
+
+# ls -1 20181*.LSMOUT_DOMAIN1 | sort | tr '\n' ' ' | xargs -i bash -c "ncrcat {} output.nc"
