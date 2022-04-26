@@ -12,6 +12,9 @@ def main(argv):
    
    chrtout_files = sorted(glob.glob(inputfile))
    #pprint(chrtout_files)
+   if len(chrtout_files) == 0:
+      print("Cannot find files to merge!")
+      return
    output_folder = os.path.dirname(chrtout_files[0])
    try:
      # Create the directory in the path
