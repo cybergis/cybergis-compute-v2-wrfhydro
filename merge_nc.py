@@ -15,7 +15,7 @@ def main(argv):
    if len(chrtout_files) == 0:
       print("Cannot find files to merge!")
       return
-   output_folder = os.path.dirname(chrtout_files[0])
+   output_folder = os.path.dirname(outputfile)
    try:
      # Create the directory in the path
      os.makedirs(output_folder, exist_ok = True)
