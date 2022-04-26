@@ -56,12 +56,24 @@ MoveFiles "*.LAKEOUT_DOMAIN*" "$OUTPUT_ROOT/LAKEOUT"
 #*.CHANOBS_DOMAIN* -->  CHANOBS
 MoveFiles "*.CHANOBS_DOMAIN*" "$OUTPUT_ROOT/CHANOBS"
 
-echo "postprocessing doen"
 
 # ls -1 20181*.LSMOUT_DOMAIN1 | sort | tr '\n' ' ' | xargs -i bash -c "ncrcat {} output.nc"
-#cd ${executable_folder}
-#python merge_nc.py "$OUTPUT_ROOT/CHANOBS/*.CHANOBS_DOMAIN1" "$OUTPUT_ROOT/CHANOBS/CHANOBS_merged.nc"
 
-#python merge_nc.py "$OUTPUT_ROOT/LDASOUT/*.LDASOUT_DOMAIN1" "$OUTPUT_ROOT/LDASOUT/LDASOUT_merged.nc"
 
-#python merge_nc.py "$OUTPUT_ROOT/CHRTOUT/*.CHRTOUT_DOMAIN1" "$OUTPUT_ROOT/CHRTOUT/CHRTOUT_merged.nc"
+
+MERGE_FOLDER_NAME=0_merged
+
+if [[ "${param_Merge_Output}" = "True" ]]; then
+  echo "Merge Outputs ..."
+
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHANOBS/*.CHANOBS_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/CHANOBS/CHANOBS_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LDASOUT/*.LDASOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LDASOUT/LDASOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHRTOUT/*.CHRTOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/CHRTOUT/CHRTOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/GWOUT/*.GWOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/GWOUT/GWOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LAKEOUT/*.LAKEOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LAKEOUT/LAKEOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/RTOUT/*.RTOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/RTOUT/RTOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LSMOUT/*.LSMOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LSMOUT/LSMOUT_DOMAIN1_merged.nc"
+fi
+
+
+echo "postprocessing done"
