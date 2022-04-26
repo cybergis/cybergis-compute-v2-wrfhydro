@@ -61,7 +61,7 @@ MoveFiles "*.CHANOBS_DOMAIN*" "$OUTPUT_ROOT/CHANOBS"
 
 
 
-MERGE_FOLDER_NAME=0_merged
+MERGE_FOLDER_NAME=Merged
 
 if [[ "${param_Merge_Output}" = "True" ]]; then
   echo "Merge Outputs ..."
