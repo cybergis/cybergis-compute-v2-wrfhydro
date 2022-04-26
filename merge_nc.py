@@ -1,3 +1,4 @@
+# adapted from code snippet from Tony C. at CUAHSI
 import glob
 import os
 import sys
