@@ -64,3 +64,4 @@ echo "postprocessing doen"
 
 #python merge_nc.py "$OUTPUT_ROOT/LDASOUT/*.LDASOUT_DOMAIN1" "$OUTPUT_ROOT/LDASOUT/LDASOUT_merged.nc"
 
+#python merge_nc.py "$OUTPUT_ROOT/CHRTOUT/*.CHRTOUT_DOMAIN1" "$OUTPUT_ROOT/CHRTOUT/CHRTOUT_merged.nc"
