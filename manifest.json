@@ -42,6 +42,11 @@
             "type": "string_option",
             "options": ["Noah", "NoahMP"],
             "default_value": "NoahMP"
+        },
+        "Merge_Output": {
+            "type": "string_option",
+            "options": ["True", "False"],
+            "default_value": "False"
         }
     },
     "default_result_folder_downloadable_path": "/"
