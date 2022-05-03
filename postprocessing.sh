@@ -60,19 +60,18 @@ MoveFiles "*.CHANOBS_DOMAIN*" "$OUTPUT_ROOT/CHANOBS"
 # ls -1 20181*.LSMOUT_DOMAIN1 | sort | tr '\n' ' ' | xargs -i bash -c "ncrcat {} output.nc"
 
 
-
-MERGE_FOLDER_NAME=Merged
+MERGED_OUTPUT_ROOT=${result_folder}/Outputs_Merged
 
 if [[ "${param_Merge_Output}" = "True" ]]; then
   echo "Merge Outputs ..."
 
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHANOBS/*.CHANOBS_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/CHANOBS/CHANOBS_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LDASOUT/*.LDASOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LDASOUT/LDASOUT_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHRTOUT/*.CHRTOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/CHRTOUT/CHRTOUT_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/GWOUT/*.GWOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/GWOUT/GWOUT_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LAKEOUT/*.LAKEOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LAKEOUT/LAKEOUT_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/RTOUT/*.RTOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/RTOUT/RTOUT_DOMAIN1_merged.nc"
-  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LSMOUT/*.LSMOUT_DOMAIN1" "$OUTPUT_ROOT/${MERGE_FOLDER_NAME}/LSMOUT/LSMOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHANOBS/*.CHANOBS_DOMAIN1" "${MERGED_OUTPUT_ROOT}/CHANOBS/CHANOBS_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LDASOUT/*.LDASOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/LDASOUT/LDASOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/CHRTOUT/*.CHRTOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/CHRTOUT/CHRTOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/GWOUT/*.GWOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/GWOUT/GWOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LAKEOUT/*.LAKEOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/LAKEOUT/LAKEOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/RTOUT/*.RTOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/RTOUT/RTOUT_DOMAIN1_merged.nc"
+  python ${executable_folder}/merge_nc.py "$OUTPUT_ROOT/LSMOUT/*.LSMOUT_DOMAIN1" "${MERGED_OUTPUT_ROOT}/LSMOUT/LSMOUT_DOMAIN1_merged.nc"
 fi
 
 
