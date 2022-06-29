@@ -46,7 +46,7 @@
         "Merge_Output": {
             "type": "string_option",
             "options": ["True", "False"],
-            "default_value": "False"
+            "default_value": "True"
         }
     },
     "default_result_folder_downloadable_path": "/"
