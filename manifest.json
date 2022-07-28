@@ -30,7 +30,7 @@
             }    
     },
     "require_upload_data": true,
-    "supported_hpc": ["keeling_community", "expanse_community"],
+    "supported_hpc": ["keeling_community", "expanse_community", "anvil_community"],
     "default_hpc": "expanse_community",
     "param_rules": {
         "Model_Version": {
