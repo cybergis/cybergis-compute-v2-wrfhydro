@@ -43,6 +43,11 @@
             "options": ["Noah", "NoahMP"],
             "default_value": "NoahMP"
         },
+        "Forcing_Path": {
+            "type": "string_input",
+            "require": true,
+            "default_value": "<UPLOAD>"
+        },
         "Merge_Output": {
             "type": "string_option",
             "options": ["True", "False"],
