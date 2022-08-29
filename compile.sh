@@ -63,7 +63,8 @@ forcing_path="/compute_shared/${param_Forcing_Path}"
 echo ${forcing_path}
 if [[ -d "${forcing_path}" ]]; then
     echo "forcing_path [${forcing_path}] provided by user. relinking..."
-    ln -sf ${forcing_path} ${result_folder}/Simulation
+    ln -sf ${forcing_path} ${result_folder}/Simulation/FORCING
+    ls ${result_folder}/Simulation/FORCING/* -al
 fi
 
 echo "copying compiled binary and static files from Run/* to Simulation/"
