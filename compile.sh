@@ -68,6 +68,16 @@ if [[ -d "${forcing_path}" ]]; then
     ls ${result_folder}/Simulation/FORCING/* -al
 fi
 
+# check param_Domain_Path
+domain_path="/compute_shared/${param_Domain_Path}"
+echo ${domain_path}
+if [[ -d "${domain_path}" ]]; then
+    echo "domain_path [${domain_path}] provided by user. relinking..."
+    unlink ${result_folder}/Simulation/DOMAIN
+    ln -sf ${domain_path} ${result_folder}/Simulation/DOMAIN
+    ls ${result_folder}/Simulation/DOMAIN/* -al
+fi
+
 echo "copying compiled binary and static files from Run/* to Simulation/"
 cp -rf ${executable_folder}/WRFHYDRO/trunk/NDHMS/Run/* ${result_folder}/Simulation/
 
