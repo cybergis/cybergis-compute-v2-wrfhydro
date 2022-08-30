@@ -75,4 +75,8 @@ if [[ "${param_Merge_Output}" = "True" ]]; then
 fi
 
 
+mkdir -p /compute_shared/${job_id}
+cd ${result_folder}
+cp -rvf $OUTPUT_ROOT /compute_shared/${job_id}/
+
 echo "postprocessing done"
