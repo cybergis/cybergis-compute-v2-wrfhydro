@@ -78,5 +78,6 @@ fi
 mkdir -p /compute_shared/${job_id}
 cd ${result_folder}
 cp -rvf $OUTPUT_ROOT /compute_shared/${job_id}/
+cp -rvf ${MERGED_OUTPUT_ROOT} /compute_shared/${job_id}/
 
 echo "postprocessing done"
