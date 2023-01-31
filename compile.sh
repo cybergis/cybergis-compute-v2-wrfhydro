@@ -59,7 +59,7 @@ if [[ -d "${restart_folder}" ]]; then
 fi
 
 # check param_Forcing_Path
-forcing_path="/compute_shared/${param_Forcing_Path}"
+forcing_path="/compute_scratch/${param_Forcing_Path}"
 echo ${forcing_path}
 if [[ -d "${forcing_path}" ]]; then
     echo "forcing_path [${forcing_path}] provided by user. relinking..."
