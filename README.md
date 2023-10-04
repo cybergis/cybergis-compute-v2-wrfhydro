@@ -4,7 +4,7 @@ This repo implemented support for running WRFHydro 5.x model on HPC resources vi
 
 Model developers who may want to contribute other models to CyberGIS-Compute can use this repo as an example.
 
-For end-users can refer to the exampe notebook here: Open demo notebook with CyberGIS-Jupyter for Water (CJW) <a href="http://go.illinois.edu/cybergis-jupyter-water/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fcybergis%2Fcybergis-compute-v2-wrfhydro&urlpath=lab%2Ftree%2Fcybergis-compute-v2-wrfhydro%2Fwrfhydro_compute_v2.ipynb&branch=main" target="_blank">HERE</a>
+For end-users can refer to the exampe notebook here: Open demo notebook with CyberGIS-Jupyter for Water (CJW) <a href="http://go.illinois.edu/cybergis-jupyter-water/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fcybergis%2Fcybergis-compute-v2-wrfhydro&urlpath=lab%2Ftree%2Fcybergis-compute-v2-wrfhydro%2Fwrfhydro_compute_v2.ipynb&branch=main" target="_blank">HERE if you have a Hydroshare account</a> or <a href="https://www.hydroshare.org/resource/cc28d769943046fdac0f9b0c0fc2afc6/">Here to view the resource on Hydroshare</a>
 
 ## manifest.json
 
