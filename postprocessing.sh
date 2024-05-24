@@ -75,9 +75,12 @@ if [[ "${param_Merge_Output}" = "True" ]]; then
 fi
 
 
-mkdir -p /compute_shared/${job_id}
+mkdir -p /compute_scratch/${job_id}
 cd ${result_folder}
-cp -rvf $OUTPUT_ROOT /compute_shared/${job_id}/
-cp -rvf ${MERGED_OUTPUT_ROOT} /compute_shared/${job_id}/
+cp -rvf $OUTPUT_ROOT /compute_scratch/${job_id}/
+
+if [[ "${param_Merge_Output}" = "True" ]]; then
+  cp -rvf ${MERGED_OUTPUT_ROOT} /compute_scratch/${job_id}/
+fi
 
 echo "postprocessing done"
